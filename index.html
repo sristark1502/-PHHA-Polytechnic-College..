@@ -1,910 +1,1665 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHHA Polytechnic College - Leading Technical Education</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-top {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-icon {
-            width: 65px;
-            height: 50px;
-            background: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #1e3c72;
-            letter-spacing: 1px;
-        }
-
-        .logo-text h1 {
-            font-size: 24px;
-            margin-bottom: 2px;
-        }
-
-        .logo-text p {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        nav {
-            background: #0d1f3d;
-        }
-
-        nav ul {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav ul li {
-            position: relative;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            display: block;
-            transition: background 0.3s;
-        }
-
-        nav ul li a:hover {
-            background: #1e3c72;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(30, 60, 114, 0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23f0f4f8" width="1200" height="400"/><path fill="%23d4e0ec" d="M0 300 Q300 250 600 300 T1200 300 V400 H0 Z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .btn-primary {
-            background: #ff6b35;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #e55a2b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #1e3c72;
-        }
-
-        .btn-secondary:hover {
-            background: #f0f4f8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Quick Stats */
-        .stats {
-            background: #f8f9fa;
-            padding: 60px 20px;
-        }
-
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .stat-item {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: bold;
-            color: #1e3c72;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 18px;
-            color: #666;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            font-size: 36px;
-            color: #1e3c72;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 50px;
-            font-size: 18px;
-        }
-
-        /* Programs Grid */
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .program-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .program-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .program-icon {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-            font-size: 48px;
-        }
-
-        .program-content {
-            padding: 25px;
-        }
-
-        .program-content h3 {
-            color: #1e3c72;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .program-content p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .program-content ul {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .program-content ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
-        }
-
-        .program-content ul li:before {
-            content: "✓ ";
-            color: #ff6b35;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        /* Faculty Section */
-        .faculty-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .faculty-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .faculty-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .faculty-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 30px auto 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
-            font-weight: bold;
-        }
-
-        .faculty-info {
-            padding: 0 25px 30px;
-        }
-
-        .faculty-info h3 {
-            color: #1e3c72;
-            margin-bottom: 5px;
-            font-size: 22px;
-        }
-
-        .faculty-info .position {
-            color: #ff6b35;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .faculty-info .department {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .faculty-info .credentials {
-            font-size: 14px;
-            color: #888;
-        }
-
-        /* Admissions Section */
-        .admissions {
-            background: #f8f9fa;
-        }
-
-        .admission-process {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .process-step {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin: 0 auto 20px;
-        }
-
-        .process-step h3 {
-            color: #1e3c72;
-            margin-bottom: 15px;
-        }
-
-        .process-step p {
-            color: #666;
-        }
-
-        /* Student Resources */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .resource-item {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            border-left: 4px solid #ff6b35;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-
-        .resource-item:hover {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-            transform: translateX(5px);
-        }
-
-        .resource-icon {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .resource-item h3 {
-            color: #1e3c72;
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-
-        .resource-item p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .resource-link {
-            color: #ff6b35;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .resource-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            background: #0d1f3d;
-            color: white;
-            padding: 50px 20px 20px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 20px;
-            color: #ff6b35;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #2a3f5f;
-            color: #999;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                padding: 0;
-            }
-
-            nav ul li a {
-                text-align: center;
-            }
-
-            .logo-text h1 {
-                font-size: 18px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHHA POLYTECHNIC | Shape the Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a0a0b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #c9a962;
+      border-radius: 3px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: #0a0a0b;
+      color: #fafafa;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes gradientFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(80px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(201, 169, 98, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(201, 169, 98, 0.6); }
+    }
+
+    @keyframes kenBurns {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 10, 11, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-circle {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #c9a962;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      color: #c9a962;
+    }
+
+    .nav-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      color: #fafafa;
+      text-decoration: none;
+      padding: 8px 0;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a962, transparent);
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link:hover::after {
+      transform: translateX(0);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c9a962, #a88b4a);
+      border: none;
+      padding: 14px 32px;
+      color: #0a0a0b;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 169, 98, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(201, 169, 98, 0.5);
+      padding: 14px 32px;
+      color: #fafafa;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(201, 169, 98, 0.1);
+      border-color: #c9a962;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(10, 10, 11, 0.9) 0%, rgba(10, 10, 11, 0.7) 50%, rgba(10, 10, 11, 0.85) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+      padding: 0 60px;
+    }
+
+    .hero-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a962;
+      margin-bottom: 30px;
+      animation: fadeSlideIn 1s ease forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(60px, 10vw, 120px);
+      font-weight: 300;
+      line-height: 0.95;
+      margin-bottom: 40px;
+      animation: revealUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .hero-title-highlight {
+      display: block;
+      background: linear-gradient(90deg, #c9a962, #e8d5a3, #c9a962);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .hero-description {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 500px;
+      color: rgba(250, 250, 250, 0.8);
+      margin-bottom: 50px;
+      animation: fadeSlideIn 1s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      animation: fadeSlideIn 1s ease forwards;
+      animation-delay: 1s;
+      opacity: 0;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 60px;
+      left: 60px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 2;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(180deg, #c9a962, transparent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .scroll-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(250, 250, 250, 0.5);
+      writing-mode: vertical-lr;
+    }
+
+    /* Marquee Banner */
+    .marquee-banner {
+      overflow: hidden;
+      border-top: 1px solid rgba(201, 169, 98, 0.2);
+      border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+      padding: 20px 0;
+      background: rgba(201, 169, 98, 0.03);
+    }
+
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(250, 250, 250, 0.6);
+      padding: 0 60px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .marquee-item::after {
+      content: '✦';
+      color: #c9a962;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 150px 60px;
+      position: relative;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a962;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 6vw, 70px);
+      font-weight: 300;
+      margin-top: 20px;
+    }
+
+    .section-title em {
+      font-weight: 500;
+    }
+
+    .section-description {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      max-width: 400px;
+      color: rgba(250, 250, 250, 0.6);
+      line-height: 1.8;
+    }
+
+    /* About Section with Image */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      height: 600px;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: rgba(10, 10, 11, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 20px 30px;
+      border: 1px solid rgba(201, 169, 98, 0.3);
+    }
+
+    .about-image-badge span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a962;
+    }
+
+    .about-content h2 {
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 300;
+      margin: 20px 0 30px;
+    }
+
+    .about-content p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(250, 250, 250, 0.7);
+      margin-bottom: 30px;
+    }
+
+    /* Programs Grid */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .program-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c9a962, transparent);
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+      z-index: 2;
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201, 169, 98, 0.15);
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.12), rgba(201, 169, 98, 0.04));
+      border-color: rgba(201, 169, 98, 0.4);
+    }
+
+    .program-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .program-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .program-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .program-card:hover .program-image img {
+      transform: scale(1.1);
+    }
+
+    .program-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(transparent, rgba(10, 10, 11, 1));
+    }
+
+    .program-content {
+      padding: 30px 40px 40px;
+    }
+
+    .program-icon {
+      font-size: 28px;
+      color: #c9a962;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .program-card:hover .program-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .program-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .program-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: rgba(250, 250, 250, 0.5);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .program-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .program-students {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #c9a962;
+    }
+
+    .program-arrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      color: #c9a962;
+      transition: transform 0.3s ease;
+    }
+
+    .program-card:hover .program-arrow {
+      transform: translateX(5px);
+    }
+
+    /* Statistics Section */
+    .stats-section {
+      padding: 100px 60px;
+      background: linear-gradient(180deg, rgba(201, 169, 98, 0.05) 0%, transparent 100%);
+      border-top: 1px solid rgba(201, 169, 98, 0.1);
+      border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 60px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 40px;
+      border-radius: 4px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .stat-card:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(201, 169, 98, 0.05));
+    }
+
+    .stat-value {
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 300;
+      color: #c9a962;
+      margin-bottom: 15px;
+    }
+
+    .stat-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(250, 250, 250, 0.6);
+    }
+
+    /* Faculty Section */
+    .faculty-section {
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .faculty-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .faculty-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .faculty-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .faculty-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px;
+      background: linear-gradient(transparent, rgba(10, 10, 11, 0.95));
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .faculty-card:hover .faculty-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .faculty-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .faculty-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a962;
+    }
+
+    /* Cultural Gallery */
+    .gallery-section {
+      background: linear-gradient(180deg, rgba(201, 169, 98, 0.03) 0%, transparent 100%);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 300px);
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(201, 169, 98, 0.3), rgba(10, 10, 11, 0.7));
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 15px 30px;
+    }
+
+    /* Campus Section */
+    .campus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .campus-card {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .campus-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .campus-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .campus-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px;
+      background: linear-gradient(transparent, rgba(10, 10, 11, 0.95));
+    }
+
+    .campus-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .campus-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: rgba(250, 250, 250, 0.7);
+      line-height: 1.6;
+    }
+
+    /* News Section */
+    .news-section {
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .news-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 169, 98, 0.3);
+    }
+
+    .news-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .news-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .news-card:hover .news-image img {
+      transform: scale(1.1);
+    }
+
+    .news-content {
+      padding: 30px;
+    }
+
+    .news-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .news-date {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      color: rgba(250, 250, 250, 0.4);
+    }
+
+    .news-category {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a962;
+    }
+
+    .news-title {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .news-excerpt {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: rgba(250, 250, 250, 0.6);
+      line-height: 1.7;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+
+    .cta-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+
+    .cta-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(10, 10, 11, 0.95) 0%, rgba(10, 10, 11, 0.8) 100%);
+      z-index: 1;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(50px, 8vw, 100px);
+      font-weight: 300;
+      margin: 30px 0 50px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .cta-buttons .btn-primary,
+    .cta-buttons .btn-secondary {
+      padding: 20px 50px;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 80px 60px 40px;
+      border-top: 1px solid rgba(201, 169, 98, 0.1);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .footer-logo-circle {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #c9a962;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: #c9a962;
+    }
+
+    .footer-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+
+    .footer-description {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(250, 250, 250, 0.5);
+      max-width: 300px;
+    }
+
+    .footer-column h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a962;
+      margin-bottom: 25px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      color: rgba(250, 250, 250, 0.6);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: #c9a962;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-copyright {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      color: rgba(250, 250, 250, 0.4);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-legal a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      color: rgba(250, 250, 250, 0.4);
+      text-decoration: none;
+    }
+
+    /* Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .gallery-item:nth-child(4) { grid-column: span 1; }
+    }
+
+    @media (max-width: 1024px) {
+      .nav { padding: 20px 30px; }
+      .nav-links { display: none; }
+      .hero-content { padding: 0 30px; }
+      .section { padding: 100px 30px; }
+      .programs-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-section { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .programs-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+      .faculty-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 1; }
+      .campus-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .hero-buttons { flex-direction: column; }
+      .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-top">
-            <div class="logo">
-                <div class="logo-icon">PHHA</div>
-                <div class="logo-text">
-                    <h1>PHHA Polytechnic College</h1>
-                    <p>Excellence in Technical Education</p>
-                </div>
-            </div>
-            <div class="contact-info" style="text-align: right; font-size: 14px;">
-                <p>📞 +91 80721 88661</p>
-                <p>✉️ phhapolytechnic@gmail.com</p>
-            </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-circle">PHHA</div>
+      <span class="nav-logo-text">PHHA POLYTECHNIC</span>
+    </div>
+    <div class="nav-links">
+      <a href="#programs" class="nav-link">Programs</a>
+      <a href="#faculty" class="nav-link">Faculty</a>
+      <a href="#campus" class="nav-link">Campus</a>
+      <a href="#cultural" class="nav-link">Cultural</a>
+      <a href="#news" class="nav-link">News</a>
+    </div>
+    <button class="btn-primary">Apply Now</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1920&q=80" alt="Modern College Campus">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tagline">Technical Excellence · Innovation · Career Success</div>
+      <h1 class="hero-title">
+        <span>Shape the</span>
+        <span class="hero-title-highlight">Future</span>
+      </h1>
+      <p class="hero-description">
+        Where technical skills meet innovation. Transform your passion 
+        into expertise with industry-focused diploma programs.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary">Explore Programs</button>
+        <button class="btn-secondary">Virtual Tour</button>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll to Discover</span>
+    </div>
+  </section>
+
+  <!-- Marquee Banner -->
+  <div class="marquee-banner">
+    <div class="marquee-track">
+      <span class="marquee-item">AICTE Approved</span>
+      <span class="marquee-item">95% Placement Record</span>
+      <span class="marquee-item">Industry-Ready Curriculum</span>
+      <span class="marquee-item">Modern Labs & Workshops</span>
+      <span class="marquee-item">Skilled Faculty</span>
+      <span class="marquee-item">AICTE Approved</span>
+      <span class="marquee-item">95% Placement Record</span>
+      <span class="marquee-item">Industry-Ready Curriculum</span>
+      <span class="marquee-item">Modern Labs & Workshops</span>
+      <span class="marquee-item">Skilled Faculty</span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="about-section">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Students in Campus">
+        <div class="about-image-badge">
+          <span>Est. 1998</span>
         </div>
-    </header>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-label">About Us</span>
+        <h2>Building Tomorrow's <em>Engineers</em></h2>
+        <p>
+          PHHA Polytechnic stands as a beacon of technical education excellence in India. 
+          For over 25 years, we have been nurturing talented minds and transforming them 
+          into skilled professionals ready to lead the industry.
+        </p>
+        <p>
+          Our state-of-the-art infrastructure, experienced faculty, and industry-aligned 
+          curriculum ensure that every student receives world-class education combined 
+          with practical hands-on experience.
+        </p>
+        <button class="btn-primary">Learn More</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#programs">Academic Programs</a></li>
-            <li><a href="#faculty">Faculty</a></li>
-            <li><a href="#admissions">Admissions</a></li>
-            <li><a href="#resources">Student Resources</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <h2>Welcome to PHHA Polytechnic College</h2>
-        <p>Empowering students with industry-relevant technical skills, hands-on training, and innovative learning approaches to build successful careers in engineering and technology.</p>
-        <div class="cta-buttons">
-            <a href="#admissions" class="btn btn-primary">Apply Now</a>
-            <a href="#programs" class="btn btn-secondary">Explore Programs</a>
+  <!-- Programs Section -->
+  <section class="section" id="programs">
+    <div class="section-header reveal">
+      <div>
+        <span class="section-label">Diploma Programs</span>
+        <h2 class="section-title">Courses of <em>Excellence</em></h2>
+      </div>
+      <p class="section-description">
+        Industry-aligned diploma programs designed to build 
+        practical skills and launch successful careers.
+      </p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card reveal">
+        <div class="program-image">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" alt="Computer Engineering">
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">15,000+</div>
-                <div class="stat-label">Students Enrolled</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Expert Faculty</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">Degree Programs</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">95%</div>
-                <div class="stat-label">Graduate Success Rate</div>
-            </div>
+        <div class="program-content">
+          <div class="program-icon">◈</div>
+          <h3 class="program-name">Computer Engineering</h3>
+          <p class="program-desc">Software Development, Networking, Cybersecurity</p>
+          <div class="program-footer">
+            <span class="program-students">800+ Students</span>
+            <span class="program-arrow">→</span>
+          </div>
         </div>
-    </section>
-
-    <!-- Academic Programs -->
-    <section id="programs" class="container">
-        <h2 class="section-title">Academic Programs</h2>
-        <p class="section-subtitle">Discover your path to success with our comprehensive range of undergraduate and graduate programs</p>
-        
-        <div class="programs-grid">
-            <div class="program-card">
-                <div class="program-icon">🎓</div>
-                <div class="program-content">
-                    <h3>Engineering & Technology</h3>
-                    <p>Cutting-edge programs in engineering disciplines with hands-on learning and industry partnerships.</p>
-                    <ul>
-                        <li>Computer Science & Engineering</li>
-                        <li>Electrical Engineering</li>
-                        <li>Mechanical Engineering</li>
-                        <li>Civil Engineering</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Learn More</a>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon">💼</div>
-                <div class="program-content">
-                    <h3>Business & Management</h3>
-                    <p>Develop leadership skills and business acumen with our AACSB-accredited programs.</p>
-                    <ul>
-                        <li>MBA Programs</li>
-                        <li>Finance & Accounting</li>
-                        <li>Marketing & Strategy</li>
-                        <li>Entrepreneurship</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Learn More</a>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon">🔬</div>
-                <div class="program-content">
-                    <h3>Sciences & Mathematics</h3>
-                    <p>Explore the frontiers of knowledge through research-driven science programs.</p>
-                    <ul>
-                        <li>Biological Sciences</li>
-                        <li>Chemistry & Biochemistry</li>
-                        <li>Physics & Astronomy</li>
-                        <li>Applied Mathematics</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Learn More</a>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon">🎨</div>
-                <div class="program-content">
-                    <h3>Arts & Humanities</h3>
-                    <p>Foster creativity and critical thinking through our diverse arts and humanities programs.</p>
-                    <ul>
-                        <li>Literature & Languages</li>
-                        <li>History & Philosophy</li>
-                        <li>Visual & Performing Arts</li>
-                        <li>Communications & Media</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Learn More</a>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon">⚕️</div>
-                <div class="program-content">
-                    <h3>Health Sciences</h3>
-                    <p>Prepare for rewarding careers in healthcare with our comprehensive health programs.</p>
-                    <ul>
-                        <li>Nursing Programs</li>
-                        <li>Public Health</li>
-                        <li>Healthcare Administration</li>
-                        <li>Medical Technology</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Learn More</a>
-                </div>
-            </div>
-
-            <div class="program-card">
-                <div class="program-icon">⚖️</div>
-                <div class="program-content">
-                    <h3>Law & Social Sciences</h3>
-                    <p>Shape society and advocate for justice through our law and social science programs.</p>
-                    <ul>
-                        <li>Law Programs (JD, LLM)</li>
-                        <li>Political Science</li>
-                        <li>Sociology & Psychology</li>
-                        <li>Criminal Justice</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Learn More</a>
-                </div>
-            </div>
+      </div>
+      <div class="program-card reveal">
+        <div class="program-image">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Mechanical Engineering">
         </div>
-    </section>
-
-    <!-- Faculty Section -->
-    <section id="faculty" class="container" style="background: #f8f9fa; margin: 0; max-width: 100%; padding: 60px 20px;">
-        <h2 class="section-title">Our Distinguished Faculty</h2>
-        <p class="section-subtitle">Learn from world-renowned experts committed to your success</p>
-        
-        <div class="faculty-grid" style="max-width: 1200px; margin: 0 auto;">
-            <div class="faculty-card">
-                <div class="faculty-image">JD</div>
-                <div class="faculty-info">
-                    <h3>Dr. Jennifer Davis</h3>
-                    <p class="position">Dean of Engineering</p>
-                    <p class="department">Computer Science Department</p>
-                    <p class="credentials">Ph.D. MIT • 20+ Years Experience</p>
-                </div>
-            </div>
-
-            <div class="faculty-card">
-                <div class="faculty-image">RM</div>
-                <div class="faculty-info">
-                    <h3>Prof. Robert Mitchell</h3>
-                    <p class="position">Department Chair</p>
-                    <p class="department">Business Administration</p>
-                    <p class="credentials">Ph.D. Harvard • Former Fortune 500 CEO</p>
-                </div>
-            </div>
-
-            <div class="faculty-card">
-                <div class="faculty-image">SC</div>
-                <div class="faculty-info">
-                    <h3>Dr. Sarah Chen</h3>
-                    <p class="position">Research Professor</p>
-                    <p class="department">Biological Sciences</p>
-                    <p class="credentials">Ph.D. Stanford • Published Author</p>
-                </div>
-            </div>
-
-            <div class="faculty-card">
-                <div class="faculty-image">MP</div>
-                <div class="faculty-info">
-                    <h3>Dr. Michael Peterson</h3>
-                    <p class="position">Associate Professor</p>
-                    <p class="department">Mathematics & Statistics</p>
-                    <p class="credentials">Ph.D. Princeton • NSF Grant Recipient</p>
-                </div>
-            </div>
+        <div class="program-content">
+          <div class="program-icon">◇</div>
+          <h3 class="program-name">Mechanical Engineering</h3>
+          <p class="program-desc">CAD/CAM, Manufacturing, Automation</p>
+          <div class="program-footer">
+            <span class="program-students">650+ Students</span>
+            <span class="program-arrow">→</span>
+          </div>
         </div>
-    </section>
-
-    <!-- Admissions Section -->
-    <section id="admissions" class="admissions">
-        <div class="container">
-            <h2 class="section-title">Admissions</h2>
-            <p class="section-subtitle">Start your journey with us - Apply in four simple steps</p>
-            
-            <div class="admission-process">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Submit Application</h3>
-                    <p>Complete our online application form with your personal details, academic history, and program preferences.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Document Upload</h3>
-                    <p>Submit transcripts, test scores, letters of recommendation, and personal statement through our portal.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Review Process</h3>
-                    <p>Our admissions committee carefully reviews your application. You'll receive updates via email.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Acceptance & Enrollment</h3>
-                    <p>Receive your decision and complete enrollment procedures to secure your place in our community.</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 50px;">
-                <h3 style="color: #1e3c72; margin-bottom: 20px;">Important Dates</h3>
-                <div style="background: white; display: inline-block; padding: 30px 50px; border-radius: 10px; box-shadow: 0 2px 15px rgba(0,0,0,0.1);">
-                    <p style="margin-bottom: 15px;"><strong>Fall Admission Deadline:</strong> June 1, 2025</p>
-                    <p style="margin-bottom: 15px;"><strong>Spring Admission Deadline:</strong> November 1, 2025</p>
-                    <p><strong>Financial Aid Priority Date:</strong> March 15, 2025</p>
-                </div>
-            </div>
+      </div>
+      <div class="program-card reveal">
+        <div class="program-image">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Civil Engineering">
         </div>
-    </section>
-
-    <!-- Student Resources -->
-    <section id="resources" class="container">
-        <h2 class="section-title">Student Resources</h2>
-        <p class="section-subtitle">Comprehensive support services to help you succeed academically and personally</p>
-        
-        <div class="resources-grid">
-            <div class="resource-item">
-                <div class="resource-icon">📚</div>
-                <h3>Library Services</h3>
-                <p>Access millions of books, journals, and digital resources available 24/7 through our state-of-the-art library system.</p>
-                <a href="#" class="resource-link">Visit Library Portal →</a>
-            </div>
-
-            <div class="resource-item">
-                <div class="resource-icon">💻</div>
-                <h3>Career Center</h3>
-                <p>Get career counseling, resume reviews, interview preparation, and access to exclusive job opportunities.</p>
-                <a href="#" class="resource-link">Explore Careers →</a>
-            </div>
-
-            <div class="resource-item">
-                <div class="resource-icon">🏥</div>
-                <h3>Health & Wellness</h3>
-                <p>Comprehensive health services including medical care, counseling, and wellness programs for all students.</p>
-                <a href="#" class="resource-link">Learn More →</a>
-            </div>
-
-            <div class="resource-item">
-                <div class="resource-icon">🎯</div>
-                <h3>Academic Advising</h3>
-                <p>Personalized guidance from dedicated advisors to help you plan your academic journey and achieve your goals.</p>
-                <a href="#" class="resource-link">Schedule Appointment →</a>
-            </div>
-
-            <div class="resource-item">
-                <div class="resource-icon">🏠</div>
-                <h3>Housing Services</h3>
-                <p>Modern on-campus housing options with various amenities, from traditional dorms to apartment-style living.</p>
-                <a href="#" class="resource-link">View Options →</a>
-            </div>
-
-            <div class="resource-item">
-                <div class="resource-icon">🌍</div>
-                <h3>International Student Office</h3>
-                <p>Specialized support for international students including visa assistance, orientation, and cultural programs.</p>
-                <a href="#" class="resource-link">Get Support →</a>
-            </div>
-
-            <div class="resource-item">
-                <div class="resource-icon">💰</div>
-                <h3>Financial Aid</h3>
-                <p>Explore scholarships, grants, loans, and work-study opportunities to make your education affordable.</p>
-                <a href="#" class="resource-link">Find Funding →</a>
-            </div>
-
-            <div class="resource-item">
-                <div class="resource-icon">🎭</div>
-                <h3>Student Activities</h3>
-                <p>Join 200+ student organizations, clubs, and activities to enhance your college experience and build connections.</p>
-                <a href="#" class="resource-link">Get Involved →</a>
-            </div>
+        <div class="program-content">
+          <div class="program-icon">△</div>
+          <h3 class="program-name">Civil Engineering</h3>
+          <p class="program-desc">Construction, Surveying, Structural Design</p>
+          <div class="program-footer">
+            <span class="program-students">550+ Students</span>
+            <span class="program-arrow">→</span>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p style="color: #ccc; line-height: 1.8;">PHHA Polytechnic College is dedicated to providing quality technical education and fostering innovation through practical learning and industry partnerships.</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#programs">Academic Programs</a></li>
-                    <li><a href="#admissions">Admissions</a></li>
-                    <li><a href="#">Campus Life</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Alumni</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="#">Student Portal</a></li>
-                    <li><a href="#">Faculty Directory</a></li>
-                    <li><a href="#">Course Catalog</a></li>
-                    <li><a href="#">Campus Map</a></li>
-                    <li><a href="#">Emergency Info</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <p style="color: #ccc; margin-bottom: 10px;">📍 PHHA Campus, Technical Zone<br>Education District, Gujarat</p>
-                <p style="color: #ccc; margin-bottom: 10px;">📞 +91 80721 88661</p>
-                <p style="color: #ccc; margin-bottom: 10px;">✉️ phhapolytechnic@gmail.com</p>
-                <p style="color: #ccc;">🕒 Mon-Fri: 8:00 AM - 5:00 PM</p>
-            </div>
+      </div>
+      <div class="program-card reveal">
+        <div class="program-image">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80" alt="Electrical Engineering">
         </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 PHHA Polytechnic College. All rights reserved. | <a href="#" style="color: #ff6b35; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #ff6b35; text-decoration: none;">Terms of Service</a></p>
+        <div class="program-content">
+          <div class="program-icon">◎</div>
+          <h3 class="program-name">Electrical Engineering</h3>
+          <p class="program-desc">Power Systems, Electronics, Control Systems</p>
+          <div class="program-footer">
+            <span class="program-students">700+ Students</span>
+            <span class="program-arrow">→</span>
+          </div>
         </div>
-    </footer>
+      </div>
+      <div class="program-card reveal">
+        <div class="program-image">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Electronics & Communication">
+        </div>
+        <div class="program-content">
+          <div class="program-icon">○</div>
+          <h3 class="program-name">Electronics & Communication</h3>
+          <p class="program-desc">Embedded Systems, IoT, Telecommunications</p>
+          <div class="program-footer">
+            <span class="program-students">600+ Students</span>
+            <span class="program-arrow">→</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card reveal">
+        <div class="program-image">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Information Technology">
+        </div>
+        <div class="program-content">
+          <div class="program-icon">□</div>
+          <h3 class="program-name">Information Technology</h3>
+          <p class="program-desc">Web Development, Database, Cloud Computing</p>
+          <div class="program-footer">
+            <span class="program-students">750+ Students</span>
+            <span class="program-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <!-- Statistics Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-value" data-target="4500">0</div>
+        <div class="stat-label">Students Enrolled</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" data-target="95" data-suffix="%">0</div>
+        <div class="stat-label">Placement Rate</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" data-target="50" data-suffix="+">0</div>
+        <div class="stat-label">Industry Partners</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-value" data-target="25" data-suffix="+">0</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+    </div>
+  </section>
 
-        // Add active class to nav items on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section[id]');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+  <!-- Faculty Section -->
+  <section class="section faculty-section" id="faculty">
+    <div class="section-header reveal">
+      <div>
+        <span class="section-label">Our Team</span>
+        <h2 class="section-title">Expert <em>Faculty</em></h2>
+      </div>
+      <p class="section-description">
+        Learn from industry veterans and academic experts 
+        dedicated to your success.
+      </p>
+    </div>
+    <div class="faculty-grid">
+      <div class="faculty-card reveal">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Faculty Member">
+        <div class="faculty-overlay">
+          <h4 class="faculty-name">Dr. Rajesh Kumar</h4>
+          <span class="faculty-role">Principal</span>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Faculty Member">
+        <div class="faculty-overlay">
+          <h4 class="faculty-name">Prof. Priya Sharma</h4>
+          <span class="faculty-role">HOD - Computer Dept</span>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Faculty Member">
+        <div class="faculty-overlay">
+          <h4 class="faculty-name">Dr. Amit Patel</h4>
+          <span class="faculty-role">HOD - Mechanical Dept</span>
+        </div>
+      </div>
+      <div class="faculty-card reveal">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Faculty Member">
+        <div class="faculty-overlay">
+          <h4 class="faculty-name">Prof. Sneha Mehta</h4>
+          <span class="faculty-role">HOD - Electronics Dept</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+  <!-- Campus Section -->
+  <section class="section" id="campus">
+    <div class="section-header reveal">
+      <div>
+        <span class="section-label">Infrastructure</span>
+        <h2 class="section-title">World-Class <em>Campus</em></h2>
+      </div>
+      <p class="section-description">
+        State-of-the-art facilities designed to provide 
+        the best learning environment.
+      </p>
+    </div>
+    <div class="campus-grid">
+      <div class="campus-card reveal">
+        <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" alt="Main Building">
+        <div class="campus-card-overlay">
+          <h3 class="campus-card-title">Main Academic Block</h3>
+          <p class="campus-card-desc">Modern classrooms with smart boards and AC facilities</p>
+        </div>
+      </div>
+      <div class="campus-card reveal">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="Computer Lab">
+        <div class="campus-card-overlay">
+          <h3 class="campus-card-title">Advanced Computer Labs</h3>
+          <p class="campus-card-desc">200+ high-performance workstations with latest software</p>
+        </div>
+      </div>
+      <div class="campus-card reveal">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80" alt="Workshop">
+        <div class="campus-card-overlay">
+          <h3 class="campus-card-title">Engineering Workshops</h3>
+          <p class="campus-card-desc">Fully equipped workshops for hands-on practical training</p>
+        </div>
+      </div>
+      <div class="campus-card reveal">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80" alt="Library">
+        <div class="campus-card-overlay">
+          <h3 class="campus-card-title">Central Library</h3>
+          <p class="campus-card-desc">50,000+ books, journals, and digital resources</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultural Gallery Section -->
+  <section class="section gallery-section" id="cultural">
+    <div class="section-header reveal">
+      <div>
+        <span class="section-label">Campus Life</span>
+        <h2 class="section-title">Cultural <em>Celebrations</em></h2>
+      </div>
+      <p class="section-description">
+        Experience the vibrant cultural diversity and celebrations 
+        that make our campus truly special.
+      </p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80" alt="Annual Festival">
+        <div class="gallery-overlay">
+          <span>Annual Fest</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" alt="Cultural Dance">
+        <div class="gallery-overlay">
+          <span>Cultural Night</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Tech Event">
+        <div class="gallery-overlay">
+          <span>Tech Fest</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Graduation">
+        <div class="gallery-overlay">
+          <span>Convocation</span>
+        </div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80" alt="Student Activities">
+        <div class="gallery-overlay">
+          <span>Student Life</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="section news-section" id="news">
+    <div class="section-header reveal">
+      <div>
+        <span class="section-label">Latest Updates</span>
+        <h2 class="section-title">News & <em>Events</em></h2>
+      </div>
+      <button class="btn-secondary">View All News →</button>
+    </div>
+    <div class="news-grid">
+      <div class="news-card reveal">
+        <div class="news-image">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80" alt="New Lab">
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span class="news-date">Jan 18, 2025</span>
+            <span class="news-category">Infrastructure</span>
+          </div>
+          <h3 class="news-title">New AI & Robotics Lab Inaugurated</h3>
+          <p class="news-excerpt">State-of-the-art facility with advanced robotics equipment and AI workstations.</p>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-image">
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Placement Drive">
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span class="news-date">Jan 15, 2025</span>
+            <span class="news-category">Placements</span>
+          </div>
+          <h3 class="news-title">Campus Placement Drive - 50+ Companies</h3>
+          <p class="news-excerpt">Record-breaking placement season with top companies offering excellent packages.</p>
+        </div>
+      </div>
+      <div class="news-card reveal">
+        <div class="news-image">
+          <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80" alt="Tech Fest">
+        </div>
+        <div class="news-content">
+          <div class="news-meta">
+            <span class="news-date">Jan 12, 2025</span>
+            <span class="news-category">Events</span>
+          </div>
+          <h3 class="news-title">TechnoVision 2025 - Annual Tech Fest</h3>
+          <p class="news-excerpt">Three-day extravaganza featuring hackathons, workshops, and guest lectures.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section" id="admissions">
+    <div class="cta-bg">
+      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80" alt="Students">
+    </div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <span class="section-label reveal">Start Your Technical Journey</span>
+      <h2 class="reveal">
+        Ready to <em class="hero-title-highlight">Build</em>?
+      </h2>
+      <div class="cta-buttons reveal">
+        <button class="btn-primary">Start Application</button>
+        <button class="btn-secondary">Request Information</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo-circle">PHHA</div>
+          <span class="footer-logo-text">PHHA POLYTECHNIC</span>
+        </div>
+        <p class="footer-description">
+          Empowering future innovators through technical excellence. 
+          Building skills, shaping careers, transforming lives.
+        </p>
+      </div>
+      <div class="footer-column">
+        <h4>Academics</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Programs</a>
+          <a href="#" class="footer-link">Departments</a>
+          <a href="#" class="footer-link">Faculty</a>
+          <a href="#" class="footer-link">Library</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Campus</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Facilities</a>
+          <a href="#" class="footer-link">Hostels</a>
+          <a href="#" class="footer-link">Sports</a>
+          <a href="#" class="footer-link">Events</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Admissions</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Apply</a>
+          <a href="#" class="footer-link">Visit</a>
+          <a href="#" class="footer-link">Scholarships</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Facebook</a>
+          <a href="#" class="footer-link">Instagram</a>
+          <a href="#" class="footer-link">LinkedIn</a>
+          <a href="#" class="footer-link">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">© 2025 PHHA Polytechnic. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Reveal on scroll with stagger
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 80);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Animated counters
+    const statValues = document.querySelectorAll('.stat-value');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'));
+          const suffix = el.getAttribute('data-suffix') || '';
+          let current = 0;
+          const increment = target / 60;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              el.textContent = target.toLocaleString() + suffix;
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(current).toLocaleString() + suffix;
+            }
+          }, 30);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statValues.forEach(el => counterObserver.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Parallax effect for hero
+    window.addEventListener('scroll', () => {
+      const hero = document.querySelector('.hero-bg img');
+      if (hero) {
+        hero.style.transform = `scale(1.1) translateY(${window.scrollY * 0.3}px)`;
+      }
+    });
+  </script>
+
 </body>
 </html>
